@@ -33,7 +33,7 @@ jobs:
     steps:
       - name: Deploying Python microservice to DEV environment...
         run: |
-          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/python-greetings-app:latest
+          docker pull ${{ secrets.DOCKERHUB_NAME }}/python-greetings-app:latest
           docker-compose -f docker-compose.yml stop greetings-app-dev
           docker-compose -f docker-compose.yml rm -f greetings-app-dev
           docker-compose -f docker-compose.yml up -d greetings-app-dev
@@ -43,7 +43,7 @@ jobs:
     needs: deploy-to-dev
     steps:
       - name: Running tests on DEV environment...
-        run: docker run --network=host --rm ${{ secrets.DOCKERHUB_USERNAME }}/api-tests:latest run greetings greetings_dev
+        run: docker run --network=host --rm ${{ secrets.DOCKERHUB_NAME }}/api-tests:latest run greetings greetings_dev
 
   deploy-to-stg:
     runs-on: ubuntu-latest
@@ -51,7 +51,7 @@ jobs:
     steps:
       - name: Deploying Python microservice to STG environment...
         run: |
-          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/python-greetings-app:latest
+          docker pull ${{ secrets.DOCKERHUB_NAME }}/python-greetings-app:latest
           docker-compose -f docker-compose.yml stop greetings-app-stg
           docker-compose -f docker-compose.yml rm -f greetings-app-stg
           docker-compose -f docker-compose.yml up -d greetings-app-stg
@@ -61,7 +61,7 @@ jobs:
     needs: deploy-to-stg
     steps:
       - name: Running tests on STG environment...
-        run: docker run --network=host --rm ${{ secrets.DOCKERHUB_USERNAME }}/api-tests:latest run greetings greetings_stg
+        run: docker run --network=host --rm ${{ secrets.DOCKERHUB_NAME }}/api-tests:latest run greetings greetings_stg
 
   deploy-to-prod:
     runs-on: ubuntu-latest
@@ -69,7 +69,7 @@ jobs:
     steps:
       - name: Deploying Python microservice to PROD environment...
         run: |
-          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/python-greetings-app:latest
+          docker pull ${{ secrets.DOCKERHUB_NAME }}/python-greetings-app:latest
           docker-compose -f docker-compose.yml stop greetings-app-prod
           docker-compose -f docker-compose.yml rm -f greetings-app-prod
           docker-compose -f docker-compose.yml up -d greetings-app-prod
@@ -79,4 +79,4 @@ jobs:
     needs: deploy-to-prod
     steps:
       - name: Running tests on PROD environment...
-        run: docker run --network=host --rm ${{ secrets.DOCKERHUB_USERNAME }}/api-tests:latest run greetings greetings_prod
+        run: docker run --network=host --rm ${{ secrets.DOCKERHUB_NAME }}/api-tests:latest run greetings greetings_prod
