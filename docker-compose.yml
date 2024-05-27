@@ -1,29 +1,21 @@
-version: '3.8'
+version: '3'
+
 services:
-  api-tests-dev:
-    build: .
-    image: api-tests
-    container_name: api-test-dev
-    volumes:
-      - $PWD/test-reports/dev:/api-test-automation/mochawesome-report/
-    network_mode: host
-    command: run BOOKS BOOKS_DEV
-  api-tests-stg:
-    build: .
-    image: api-tests
-    container_name: api-test-stg
-    volumes:
-      - $PWD/test-reports/stg:/api-test-automation/mochawesome-report/
-    network_mode: host
-    command: run BOOKS BOOKS_STG
-  api-tests-prd:
-    build: .
-    image: api-tests
-    container_name: api-test-prd
-    volumes:
-      - $PWD/test-reports/prd:/api-test-automation/mochawesome-report/
-    network_mode: host
-    command: run BOOKS BOOKS_PRD
+  greetings-app-dev:
+    image: talevskam/python-greetings-app:latest
+    container_name: greetings-app-dev
+    ports:
+      - "7001:3000"
 
+  greetings-app-stg:
+    image: talevskam/python-greetings-app:latest
+    container_name: greetings-app-stg
+    ports:
+      - "7002:3000"
 
-# docker run -v $PWD/test-reports:/api-test-automation/mochawesome-report/ --network=host --rm api-tests run BOOKS BOOKS_DEV
+  greetings-app-prod:
+    image: talevskam/python-greetings-app:latest
+    container_name: greetings-app-prod
+    ports:
+      - "7003:3000"
+
