@@ -28,9 +28,9 @@ jobs:
       - name: Deploying Python microservice to DEV environment...
         run: |
           docker pull ${{ secrets.DOCKERHUB_NAME }}/python-greetings-app:latest
-          docker-compose -f docker-compose.yml stop greetings-app-dev
-          docker-compose -f docker-compose.yml rm -f greetings-app-dev
-          docker-compose -f docker-compose.yml up -d greetings-app-dev
+          docker-compose -f ../../docker-compose.yml stop greetings-app-dev
+          docker-compose -f ../../docker-compose.yml rm -f greetings-app-dev
+          docker-compose -f ../../docker-compose.yml up -d greetings-app-dev
 
   tests-on-dev:
     runs-on: ubuntu-latest
@@ -46,9 +46,9 @@ jobs:
       - name: Deploying Python microservice to STG environment...
         run: |
           docker pull ${{ secrets.DOCKERHUB_NAME }}/python-greetings-app:latest
-          docker-compose -f docker-compose.yml stop greetings-app-stg
-          docker-compose -f docker-compose.yml rm -f greetings-app-stg
-          docker-compose -f docker-compose.yml up -d greetings-app-stg
+          docker-compose -f ../../docker-compose.yml stop greetings-app-stg
+          docker-compose -f ../../docker-compose.yml rm -f greetings-app-stg
+          docker-compose -f ../../docker-compose.yml up -d greetings-app-stg
 
   tests-on-stg:
     runs-on: ubuntu-latest
@@ -64,9 +64,9 @@ jobs:
       - name: Deploying Python microservice to PROD environment...
         run: |
           docker pull ${{ secrets.DOCKERHUB_NAME }}/python-greetings-app:latest
-          docker-compose -f docker-compose.yml stop greetings-app-prod
-          docker-compose -f docker-compose.yml rm -f greetings-app-prod
-          docker-compose -f docker-compose.yml up -d greetings-app-prod
+          docker-compose -f ../../docker-compose.yml stop greetings-app-prod
+          docker-compose -f ../../docker-compose.yml rm -f greetings-app-prod
+          docker-compose -f ../../docker-compose.yml up -d greetings-app-prod
 
   tests-on-prod:
     runs-on: ubuntu-latest
