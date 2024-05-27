@@ -14,7 +14,13 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Login to DockerHub
-      run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+      env:
+        DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+        DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+      run: |
+        echo "DOCKERHUB_USERNAME=${DOCKERHUB_USERNAME}" >> $GITHUB_ENV
+        echo "DOCKERHUB_PASSWORD=${DOCKERHUB_PASSWORD}" >> $GITHUB_ENV
+        docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD"
 
     - name: Build Docker Image
       run: docker build -t talevskam/api-tests:latest .
