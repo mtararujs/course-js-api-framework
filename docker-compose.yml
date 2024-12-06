@@ -1,0 +1,28 @@
+services:
+  api-tests-dev:
+    build: .
+    image: mtararujs/js-api-tests
+    container_name: api-tests-dev
+    network_mode: host
+    volumes:
+      - $PWD/test-reports/dev:/api-test-automation/mochawesome-report
+    command: run BOOKS BOOKS_DEV
+  api-tests-stg:
+    build: .
+    image: mtararujs/js-api-tests
+    container_name: api-tests-stg
+    network_mode: host
+    volumes:
+      - $PWD/test-reports/stg:/api-test-automation/mochawesome-report
+    command: run BOOKS BOOKS_STG
+  api-tests-prd:
+    build: .
+    image: mtararujs/js-api-tests
+    container_name: api-tests-prd
+    network_mode: host
+    volumes:
+      - $PWD/test-reports/prd:/api-test-automation/mochawesome-report
+    command: run BOOKS BOOKS_PRD
+
+
+# docker run --rm --network=host -v $PWD/test-reports:/api-test-automation/mochawesome-report mtararujs/js-api-tests run BOOKS BOOKS_DEV
