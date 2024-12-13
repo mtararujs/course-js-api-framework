@@ -13,9 +13,6 @@ export const config = {
         gender: 'male',
         status: 'active'
     },
-    BOOKS_LOCAL: {
-        host: 'http://sample-book-app-local:1050'
-    },
     BOOKS_DEV: {
         host: 'http://localhost:1010'
     },
