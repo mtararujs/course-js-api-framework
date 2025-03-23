@@ -1,4 +1,4 @@
-import accountRequestBody from '../../data/customer/create_account.json' assert { type: 'json' }
+import accountRequestBody from '../../data/customer/create_account.json' with { type: 'json' }
 import { config } from '../../../config.js'
 import { generateRandomEmail } from '../helpers.js'
 
