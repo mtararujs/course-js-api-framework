@@ -6,6 +6,7 @@ pipeline {
                 buildDockerImage()
             }
         }
+    }
 }
 
 def buildDockerImage(){
