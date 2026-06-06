@@ -10,3 +10,4 @@ RUN npm install
 
 CMD [ "run", "BOOKS", "BOOKS_LOCAL" ]
 ENTRYPOINT [ "npm" ]
+ 

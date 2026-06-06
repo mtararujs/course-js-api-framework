@@ -31,7 +31,7 @@ services:
 networks:
   sample-book-app-compose-network:
     external: true
-
+ 
 
 
 # docker run --rm --network sample-book-app-network -v $PWD/test-reports:/api-tests/mochawesome-report api-tests
